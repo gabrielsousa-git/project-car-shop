@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import Error from '../Utils/ErrorHandler';
 
 class ErrorHandler {
   public static handle(
@@ -7,7 +8,8 @@ class ErrorHandler {
     res: Response,
     next: NextFunction,
   ) {
-    res.status(500).json({ message: error.message });
+    const { status, message } = error as Error;
+    res.status(status || 500).json({ message });
     next();
   }
 }
