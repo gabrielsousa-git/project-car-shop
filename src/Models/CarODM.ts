@@ -4,6 +4,7 @@ import {
   model,
   models,
   isValidObjectId,
+  UpdateQuery,
 } from 'mongoose';
 import ICar from '../Interfaces/ICar';
 import ErrorHandler from '../Utils/ErrorHandler';
@@ -36,5 +37,15 @@ export default class Car {
   public async findById(_id: string): Promise<ICar | null> {
     if (!isValidObjectId(_id)) throw new ErrorHandler(422, 'Invalid mongo id');
     return this.model.findById({ _id });
+  }
+
+  public async update(_id: string, obj: Partial<ICar>): Promise<ICar | null> {
+    if (!isValidObjectId(_id)) throw new ErrorHandler(422, 'Invalid mongo id');
+
+    return this.model.findByIdAndUpdate(
+      { _id },
+      { ...obj } as UpdateQuery<ICar>,
+      { new: true },
+    );
   }
 }
