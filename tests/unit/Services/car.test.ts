@@ -6,6 +6,9 @@ import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
 
 describe('Testando a camada Services da aplicação', function () {
+  afterEach(function () {
+    sinon.restore();
+  });
   describe('Testando o arquivo CarService', function () {
     it('Deveria criar um CARRO com SUCESSO', async function () {
       const carInput: ICar = {
