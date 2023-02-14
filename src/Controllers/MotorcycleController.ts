@@ -52,4 +52,15 @@ export default class MotorcycleController {
       this.next(error);
     }
   }
+
+  public async updateMotorcycleById() {
+    const { id } = this.req.params;
+    const motorcycle: IMotorcycle = this.req.body;
+    try {
+      const updatedMotorcycle = await this.service.updateMotorcycle(id, motorcycle);
+      return this.res.status(200).json(updatedMotorcycle);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }

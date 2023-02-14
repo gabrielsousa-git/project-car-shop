@@ -34,4 +34,13 @@ export default class MotorcycleService {
 
     return this.createMotorcycleDomain(motorcycle);
   }
+
+  public async updateMotorcycle(id: string, motorcycle: Partial<IMotorcycle>) {
+    const motorcycleODM = new MotorcycleODM();
+    const updatedMotorcycle = await motorcycleODM.update(id, motorcycle);
+
+    if (!updatedMotorcycle) throw new ErrorHandler(404, 'Motorcycle not found');
+
+    return this.createMotorcycleDomain(updatedMotorcycle);
+  }
 }
