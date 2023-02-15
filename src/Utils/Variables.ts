@@ -100,3 +100,9 @@ export const inputArrayMotorcycles = [
     engineCapacity: 1000,
   },
 ];
+
+export const CARS_PATH = '/cars';
+export const CARS_ID_PATH = '/cars/:id';
+
+export const MOTORCYCLES_PATH = '/motorcycles';
+export const MOTORCYCLES_ID_PATH = '/motorcycles/:id';

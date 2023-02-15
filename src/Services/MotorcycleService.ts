@@ -2,6 +2,7 @@ import Motorcycle from '../Domains/Motorcycle';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcycleODM';
 import ErrorHandler from '../Utils/ErrorHandler';
+import { MOTORCYCLE_NOT_FOUND } from '../Utils/Variables';
 
 export default class MotorcycleService {
   private createMotorcycleDomain(motorcycle: IMotorcycle | null): Motorcycle | null {
@@ -30,7 +31,7 @@ export default class MotorcycleService {
     const motorcycleODM = new MotorcycleODM();
     const motorcycle = await motorcycleODM.findById(id);
 
-    if (!motorcycle) throw new ErrorHandler(404, 'Motorcycle not found');
+    if (!motorcycle) throw new ErrorHandler(404, MOTORCYCLE_NOT_FOUND);
 
     return this.createMotorcycleDomain(motorcycle);
   }
@@ -39,8 +40,15 @@ export default class MotorcycleService {
     const motorcycleODM = new MotorcycleODM();
     const updatedMotorcycle = await motorcycleODM.update(id, motorcycle);
 
-    if (!updatedMotorcycle) throw new ErrorHandler(404, 'Motorcycle not found');
+    if (!updatedMotorcycle) throw new ErrorHandler(404, MOTORCYCLE_NOT_FOUND);
 
     return this.createMotorcycleDomain(updatedMotorcycle);
+  }
+
+  public async deleteMotorcycle(id: string) {
+    const motorcycleODM = new MotorcycleODM();
+    const motorcycle = await motorcycleODM.delete(id);
+
+    if (!motorcycle) throw new ErrorHandler(404, MOTORCYCLE_NOT_FOUND);
   }
 }

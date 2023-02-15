@@ -1,26 +1,32 @@
 import { Router } from 'express';
 import MotorcycleController from '../Controllers/MotorcycleController';
+import { MOTORCYCLES_ID_PATH, MOTORCYCLES_PATH } from '../Utils/Variables';
 
 const routes = Router();
 
 routes.post(
-  '/motorcycles',
+  MOTORCYCLES_PATH,
   (req, res, next) => new MotorcycleController(req, res, next).create(),
 );
 
 routes.get(
-  '/motorcycles',
+  MOTORCYCLES_PATH,
   (req, res, next) => new MotorcycleController(req, res, next).getAllMotorcycles(),
 );
 
 routes.get(
-  '/motorcycles/:id',
+  MOTORCYCLES_ID_PATH,
   (req, res, next) => new MotorcycleController(req, res, next).getMotorcycleById(),
 );
 
 routes.put(
-  '/motorcycles/:id',
+  MOTORCYCLES_ID_PATH,
   (req, res, next) => new MotorcycleController(req, res, next).updateMotorcycleById(),
+);
+
+routes.delete(
+  MOTORCYCLES_ID_PATH,
+  (req, res, next) => new MotorcycleController(req, res, next).deletMotorcycleById(),
 );
 
 export default routes;

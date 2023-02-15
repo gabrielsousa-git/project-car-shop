@@ -1,30 +1,31 @@
 import { Router } from 'express';
 import CarController from '../Controllers/CarController';
+import { CARS_ID_PATH, CARS_PATH } from '../Utils/Variables';
 
 const routes = Router();
 
 routes.post(
-  '/cars',
+  CARS_PATH,
   (req, res, next) => new CarController(req, res, next).create(),
 );
 
 routes.get(
-  '/cars',
+  CARS_PATH,
   (req, res, next) => new CarController(req, res, next).getAllCars(),
 );
 
 routes.get(
-  '/cars/:id',
+  CARS_ID_PATH,
   (req, res, next) => new CarController(req, res, next).getCarById(),
 );
 
 routes.put(
-  '/cars/:id',
+  CARS_ID_PATH,
   (req, res, next) => new CarController(req, res, next).updateCarById(),
 );
 
 routes.delete(
-  '/cars/:id',
+  CARS_ID_PATH,
   (req, res, next) => new CarController(req, res, next).deletCarById(),
 );
 
