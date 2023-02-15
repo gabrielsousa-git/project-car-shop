@@ -2,6 +2,7 @@ import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 import ErrorHandler from '../Utils/ErrorHandler';
+import { CAR_NOT_FOUND } from '../Utils/Variables';
 
 export default class CarService {
   private createCarDomain(car: ICar | null): Car | null {
@@ -30,7 +31,7 @@ export default class CarService {
     const carODM = new CarODM();
     const car = await carODM.findById(id);
 
-    if (!car) throw new ErrorHandler(404, 'Car not found');
+    if (!car) throw new ErrorHandler(404, CAR_NOT_FOUND);
 
     return this.createCarDomain(car);
   }
@@ -39,8 +40,15 @@ export default class CarService {
     const carODM = new CarODM();
     const updatedCar = await carODM.update(id, car);
 
-    if (!updatedCar) throw new ErrorHandler(404, 'Car not found');
+    if (!updatedCar) throw new ErrorHandler(404, CAR_NOT_FOUND);
 
     return this.createCarDomain(updatedCar);
+  }
+
+  public async deleteCar(id: string) {
+    const carODM = new CarODM();
+    const car = await carODM.delete(id);
+
+    if (!car) throw new ErrorHandler(404, CAR_NOT_FOUND);
   }
 }

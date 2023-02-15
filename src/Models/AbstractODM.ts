@@ -7,6 +7,7 @@ import {
   UpdateQuery,
 } from 'mongoose';
 import ErrorHandler from '../Utils/ErrorHandler';
+import { INVALID_MONGO_ID } from '../Utils/Variables';
 
 export default abstract class AbstractODM<T> {
   protected schema: Schema;
@@ -28,17 +29,23 @@ export default abstract class AbstractODM<T> {
   }
 
   public async findById(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new ErrorHandler(422, 'Invalid mongo id');
+    if (!isValidObjectId(_id)) throw new ErrorHandler(422, INVALID_MONGO_ID);
     return this.model.findById({ _id });
   }
 
   public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new ErrorHandler(422, 'Invalid mongo id');
+    if (!isValidObjectId(_id)) throw new ErrorHandler(422, INVALID_MONGO_ID);
 
     return this.model.findByIdAndUpdate(
       { _id },
       { ...obj } as UpdateQuery<T>,
       { new: true },
     );
+  }
+
+  public async delete(_id: string): Promise< T | null> {
+    if (!isValidObjectId(_id)) throw new ErrorHandler(422, INVALID_MONGO_ID);
+
+    return this.model.findByIdAndDelete({ _id });
   }
 }
