@@ -1,13 +1,21 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Boas vindas ao repositório do projeto Car Shop :car: :shopping_cart:
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Para este projeto, foram aplicados os princípios de Programação Orientada a Objetos (POO) para a construção de uma API com CRUD para gerenciar uma concessionária de veículos. Essa API foi feita utilizando o banco de dados MongoDB através do framework do Mongoose.
+ #
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+<strong>Desenvolvido por:</strong> [Gabriel Sousa](https://www.linkedin.com/in/gabriel-dev-biotec/)</br>
+#
+
+<summary><strong>Tecnologias exercitadas:</strong></summary><br />
+  
+ * TypeScript <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" width="20" height="20"/>;
+ * MongoDB <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="20" height="20"/>.
+ 
+ <summary><strong>Habilidades desenvolvidas:</strong></summary><br />
+
+ * Exercitar o conhecimento dos pilares da Programação Orientada a Objetos: Herança, Abstração, Encapsulamento e Polimorfismo;
+ * Exercitar a utilização de Composição;
+ * Exercitar a criação e utilização de Interfaces;
+ * Implementar, em TypeScript: Classes, Instâncias, Atributos, Métodos e Objetos;
+ * Aplicar os conhecimentos de MongoDB, Typescript e POO para criar uma API com CRUD.
+
